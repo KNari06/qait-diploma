@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qait/schemas/defect.schema.json",
+  "title": "Finding",
+  "description": "A defect found by the code-review or the testing service (FR-D1).",
+  "type": "object",
+  "required": ["source", "type", "severity", "title", "explanation", "location"],
+  "properties": {
+    "source": { "enum": ["code", "ui"] },
+    "type": {
+      "enum": ["logic", "null-handling", "security", "performance", "error-handling", "concurrency", "api-contract", "ui-functional", "ui-validation", "ui-navigation", "ui-visual", "other"]
+    },
+    "severity": { "enum": ["low", "medium", "high", "critical"] },
+    "title": { "type": "string", "maxLength": 200 },
+    "explanation": { "type": "string" },
+    "suggestion": { "type": "string" },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "location": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["file", "startLine"],
+          "properties": {
+            "file": { "type": "string" },
+            "startLine": { "type": "integer", "minimum": 1 },
+            "endLine": { "type": "integer", "minimum": 1 },
+            "commitSha": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["url", "stepIndex"],
+          "properties": {
+            "url": { "type": "string" },
+            "stepIndex": { "type": "integer", "minimum": 0 },
+            "stepText": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "url"],
+        "properties": {
+          "kind": { "enum": ["screenshot", "log", "trace", "diff"] },
+          "url": { "type": "string" }
+        }
+      }
+    }
+  }
+}

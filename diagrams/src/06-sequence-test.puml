@@ -1,0 +1,31 @@
+@startuml sequence-test
+title QAIT — Sequence: natural-language test run
+actor "QA engineer" as qa
+participant "Web App" as web
+participant "API Gateway" as gw
+queue "Redis queue" as q
+participant "Testing Service" as test
+participant "LLM Adapter" as llm
+participant "Target app\n(browser)" as app
+participant "Report Service" as rep
+
+qa -> web : Run scenario
+web -> gw : POST /runs
+gw -> q : enqueue test job
+q -> test : job
+test -> app : open base URL
+loop each step (until step / time limit)
+  test -> app : accessibility snapshot + screenshot
+  test -> llm : step text + page state
+  llm --> test : action (click / type / navigate / assert)
+  test -> app : perform action
+  test -> gw : step progress (via queue events)
+  gw -> web : WebSocket: step status
+end
+test -> llm : check expected result
+llm --> test : pass / fail + reason
+alt failed
+  test -> rep : finding + evidence (screenshot, log, trace)
+end
+test -> rep : run result
+@enduml

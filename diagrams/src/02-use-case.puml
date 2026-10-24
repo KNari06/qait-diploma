@@ -1,0 +1,53 @@
+@startuml use-case
+!pragma layout smetana
+title QAIT — Use Case Diagram
+left to right direction
+
+actor "User" as user
+actor "Developer" as dev
+actor "QA engineer" as qa
+actor "Team lead" as lead
+dev -|> user
+qa -|> user
+lead -|> user
+actor "GitHub" as gh <<system>>
+actor "LLM provider" as llm <<system>>
+
+rectangle "QAIT Platform" {
+  usecase "UC1 Sign in with GitHub" as UC1
+  usecase "UC2 Create project /\nconnect repository" as UC2
+  usecase "UC3 Configure environments\nand test credentials" as UC3
+  usecase "UC4 Review pull request" as UC4
+  usecase "UC5 Start review manually" as UC5
+  usecase "UC6 Write test scenario\nin natural language" as UC6
+  usecase "UC7 Run test scenario" as UC7
+  usecase "UC8 Watch run live" as UC8
+  usecase "UC9 View unified\ndefect report" as UC9
+  usecase "UC10 Label finding\n(confirmed / false positive)" as UC10
+  usecase "UC11 Export report" as UC11
+  usecase "UC12 View dashboard" as UC12
+  usecase "UC13 Choose LLM model" as UC13
+  usecase "Generate findings\nwith LLM" as GEN
+}
+
+user --> UC1
+user --> UC2
+user --> UC9
+user --> UC10
+qa --> UC3
+qa --> UC6
+qa --> UC7
+qa --> UC8
+dev --> UC5
+dev --> UC13
+lead --> UC11
+lead --> UC12
+
+gh --> UC4 : PR webhook
+UC5 ..> UC4 : <<include>>
+UC4 ..> GEN : <<include>>
+UC7 ..> GEN : <<include>>
+UC8 ..> UC7 : <<extend>>
+GEN --> llm
+UC4 --> gh : post comments
+@enduml

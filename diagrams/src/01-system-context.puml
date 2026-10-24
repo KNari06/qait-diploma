@@ -1,0 +1,26 @@
+@startuml system-context
+!pragma layout smetana
+title QAIT — System Context
+skinparam rectangleBorderColor #444
+skinparam actorBorderColor #444
+left to right direction
+
+actor "Developer" as dev
+actor "QA engineer" as qa
+actor "Team lead" as lead
+
+rectangle "QAIT Platform\n(code review + AI testing + unified report)" as qait #E8F0FE
+
+cloud "GitHub\n(repositories, PRs, webhooks)" as gh
+cloud "LLM providers\n(OpenAI, Gemini)" as llm
+node "Target web application\n(under test)" as app
+
+dev --> qait : connects repo,\nreads review
+qa --> qait : writes scenarios,\nstarts test runs
+lead --> qait : reads unified report,\ndashboard
+
+gh --> qait : PR webhooks
+qait --> gh : read code, post\nreview comments
+qait --> llm : prompts /\nstructured output
+qait --> app : drives browser\n(Playwright)
+@enduml

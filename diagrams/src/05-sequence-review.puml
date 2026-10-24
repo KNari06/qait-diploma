@@ -1,0 +1,26 @@
+@startuml sequence-review
+title QAIT — Sequence: automatic pull-request review
+participant GitHub as gh
+participant "API Gateway" as gw
+queue "Redis queue" as q
+participant "Review Service" as rev
+participant "LLM Adapter" as llm
+participant "Report Service" as rep
+participant "Web App" as web
+
+gh -> gw : pull_request webhook (opened / synchronize)
+gw -> gw : verify signature
+gw -> q : enqueue review job
+q -> rev : job
+rev -> gh : get diff + related files
+rev -> rev : build context within token budget
+rev -> llm : review prompt (JSON schema)
+llm --> rev : candidate findings
+rev -> llm : filter pass
+llm --> rev : kept findings
+rev -> rep : save findings (defect schema)
+rev -> gh : post review comments
+rep -> q : run.completed event
+q -> gw
+gw -> web : WebSocket update
+@enduml

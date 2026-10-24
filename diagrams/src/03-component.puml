@@ -1,0 +1,49 @@
+@startuml component
+!pragma layout smetana
+title QAIT — Component Diagram (draft)
+
+package "Client" {
+  [Web App\n(React, TS)] as web
+}
+
+package "Backend (Node.js, TS)" {
+  [API Gateway\nauth, routing, WebSocket] as gw
+  [Project Service\nprojects, repos, environments, secrets] as proj
+  [Review Service\ndiff + context retrieval, prompting, filter] as rev
+  [Testing Service\nbrowser agent, step executor] as test
+  [Report Service\ndefect store, reports, statistics, export] as rep
+  [LLM Adapter\nLLMProvider: OpenAI | Gemini] as llmad
+  [Shared: defect schema] as schema
+}
+
+database "PostgreSQL" as db
+queue "Redis\n(BullMQ jobs, events)" as q
+storage "Object storage\n(screenshots, logs, traces)" as s3
+
+cloud "GitHub API /\nwebhooks" as gh
+cloud "OpenAI / Gemini" as llm
+node "Target web app" as app
+
+web --> gw : REST / WebSocket
+gh --> gw : webhooks (signed)
+gw --> proj : REST
+gw --> rep : REST
+gw --> q : enqueue review / test job
+q --> rev : review jobs
+q --> test : test jobs
+rev --> gh : fetch files,\npost comments
+rev --> llmad
+test --> llmad
+llmad --> llm
+test --> app : Playwright
+rev --> rep : findings (defect schema)
+test --> rep : findings + evidence
+test --> s3
+rep --> s3
+proj --> db
+rep --> db
+rev ..> schema
+test ..> schema
+rep ..> schema
+q --> gw : progress events
+@enduml

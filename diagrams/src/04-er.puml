@@ -1,0 +1,84 @@
+@startuml er
+!pragma layout smetana
+title QAIT — Data Model (draft)
+hide circle
+skinparam linetype ortho
+
+entity user {
+  *id : uuid
+  --
+  github_id : bigint
+  name : text
+  created_at : timestamptz
+}
+entity project {
+  *id : uuid
+  --
+  owner_id : uuid <<FK>>
+  name : text
+  llm_provider : text
+  llm_model : text
+}
+entity repository {
+  *id : uuid
+  --
+  project_id : uuid <<FK>>
+  github_installation_id : bigint
+  full_name : text
+}
+entity environment {
+  *id : uuid
+  --
+  project_id : uuid <<FK>>
+  base_url : text
+  secret_ref : text
+}
+entity scenario {
+  *id : uuid
+  --
+  project_id : uuid <<FK>>
+  title : text
+  steps : jsonb
+  expected : text
+}
+entity run {
+  *id : uuid
+  --
+  project_id : uuid <<FK>>
+  kind : review|test
+  status : text
+  config : jsonb
+  commit_sha : text
+  scenario_id : uuid <<FK>>
+  tokens : int
+  started_at, finished_at
+}
+entity finding {
+  *id : uuid
+  --
+  run_id : uuid <<FK>>
+  source : code|ui
+  type : text
+  severity : low|medium|high|critical
+  title : text
+  explanation : text
+  location : jsonb
+  user_label : text
+}
+entity evidence {
+  *id : uuid
+  --
+  finding_id : uuid <<FK>>
+  kind : screenshot|log|trace|diff
+  url : text
+}
+
+user ||--o{ project
+project ||--o{ repository
+project ||--o{ environment
+project ||--o{ scenario
+project ||--o{ run
+scenario |o--o{ run
+run ||--o{ finding
+finding ||--o{ evidence
+@enduml
