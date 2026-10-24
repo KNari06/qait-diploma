@@ -9,6 +9,7 @@
 | **Tag** | `pre-defense-1` (set after the open pull requests are merged) |
 | **YouTrack** | https://qait-diploma.youtrack.cloud/projects/QAIT (24 tasks, QAIT-1 … QAIT-24) |
 | **Date** | 24 Oct 2026 |
+| **PDF** | [QAIT_PreDefense1_Documentation.pdf](QAIT_PreDefense1_Documentation.pdf): all documents in one file |
 
 ## 1. Completed work
 
