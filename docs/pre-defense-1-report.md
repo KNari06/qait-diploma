@@ -19,7 +19,7 @@
 | 3 | Literature review | [03-literature-review.md](03-literature-review.md): 20 sources (18 peer-reviewed, most 2020–2025), analysis table, synthesis, gaps | Done; reference check in progress (QAIT-3) |
 | 4 | Existing system comparison | [04-existing-systems.md](04-existing-systems.md): 5 systems × 9 criteria, evidence log | Done (PR #1 in review) |
 | 5 | Technology comparison | [05-technology-comparison.md](05-technology-comparison.md): 6 decisions × 3 alternatives, weighted scoring | Done |
-| 6 | Requirements | [06-requirements.md](06-requirements.md): 26 functional + 11 non-functional requirements, MoSCoW, acceptance criteria, traceability | Done |
+| 6 | Requirements | [06-requirements.md](06-requirements.md): 30 functional (4 of them provisional, from proto-personas; PR #3) + 11 non-functional requirements, MoSCoW, acceptance criteria, traceability | Done |
 | 7 | Architecture and diagrams | [07-architecture.md](07-architecture.md); context, use case, component, ER, 2 sequence diagrams: sources in `diagrams/src` (PlantUML), exports in `diagrams/export`; defect JSON schema in `src/shared` | Done (component diagram is a draft) |
 | 8 | UX / prototype | [08-ux-prototype.md](08-ux-prototype.md): QAIT.dev screen as a visual starting point, planned screen flow S1–S5, example API | **Partial**: mockups for review, report and dashboard screens pending |
 | 9 | Verification and evaluation plan | [09-verification-plan.md](09-verification-plan.md): test levels, 4 research questions, test bench (≥100 seeded defects), metrics, baselines, hypotheses, threats | Done |
