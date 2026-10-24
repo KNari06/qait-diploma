@@ -1,6 +1,8 @@
 # 6. Requirements Specification
 
-Priorities use MoSCoW: **M** must, **S** should, **C** could. Every **M** requirement has an acceptance criterion that can be checked by a test, a demonstration or a measurement. The "Source" column links each requirement to evidence: **I** interviews (doc 02, to be confirmed), **L** literature (doc 03), **E** existing systems (doc 04), **A** team assumption.
+Priorities use MoSCoW: **M** must, **S** should, **C** could. Every **M** requirement has an acceptance criterion that can be checked by a test, a demonstration or a measurement. The "Source" column links each requirement to evidence: **I** interviews (doc 02, to be confirmed), **L** literature (doc 03), **E** existing systems (doc 04), **A** team assumption, **PP** proto-persona (hypothetical, doc 02 §2.5).
+
+PP1–PP3 are hypothetical sources, not verified interview evidence. Requirements derived from them and their priorities remain provisional until checked with real participants in doc 02 §2.7.
 
 ## 6.1 Actors
 
@@ -21,6 +23,8 @@ Priorities use MoSCoW: **M** must, **S** should, **C** could. Every **M** requir
 | FR-P2 | User creates a project and links a GitHub repository through the GitHub App | M | After installing the App, the repository appears in the project. The project shows "connected" | E |
 | FR-P3 | User adds one or more target URLs (environments) to a project | M | URL is validated (http/https, reachable). It appears in the environment list | A |
 | FR-P4 | User stores test credentials for a target app as an encrypted secret | S | Secret is never returned by the API in plain text. It is used by the agent at run time | A |
+| FR-P5 | User configures which data may be sent to an external LLM per project; unapproved categories and secrets are blocked | M | With no approved policy, no external LLM request is made. For a policy allowing code but denying DOM, screenshots and logs, captured outbound requests contain only allowed categories and exclude seeded API keys, tokens and test credentials; a run needing blocked data stops with an explanation | PP1 |
+| FR-P6 | User sets an LLM spending cap per run, enforced for both code-review and testing runs | M | Using fixed provider prices, a run whose next call would exceed the cap stops as "aborted (budget)" before that call. The check includes retries and reserved maximum costs of in-flight calls; the run shows the cap and recorded cost (NFR-C1). If a call's maximum cost cannot be bounded, it is not sent | PP1, PP2 |
 
 ### Code review (CR)
 
@@ -44,6 +48,10 @@ Priorities use MoSCoW: **M** must, **S** should, **C** could. Every **M** requir
 | FR-T4 | Run progress is shown live (current step, screenshot) | S | UI updates step status without page reload during a run | A |
 | FR-T5 | Runs are limited by step count and time | M | A scenario that cannot finish stops at the limit with status "aborted (limit)" | L9 |
 | FR-T6 | Agent can generate test scenarios by exploring a page | C | From a URL, the agent proposes ≥3 scenarios that the user can save | L15 |
+| FR-T7 | Every agent element choice or automatic recovery is shown with its reason and confidence; recovery must not hide a missing intended element or an unmet expectation | M | The trace shows each selected element, reason and confidence, plus original and replacement choices for recovery. In a seeded test with the intended element removed and a similar distractor present, the agent does not act on the distractor or report a pass; the original failure and evidence remain visible. Low-confidence choices stop for user review | PP1 |
+| FR-T8 | User can inspect and edit AI-generated steps and expected results before approving execution | M | A generated scenario remains a draft until approved. The user changes a step and expected result, saves and approves it, and the run executes that approved version. Regenerating or editing a draft requires approval of the new version before execution | PP3 |
+
+FR-T7 addresses risk R9 (false passes from choosing the wrong element) in doc 10. FR-T8 applies whenever AI-generated scenarios are available; it does not raise optional exploration (FR-T6) from C to M.
 
 ### Defects and reports (D, R)
 
@@ -84,7 +92,7 @@ Priorities use MoSCoW: **M** must, **S** should, **C** could. Every **M** requir
 
 | Objective | Requirements |
 |---|---|
-| O4 Code review | FR-CR1..7, FR-D1..2, NFR-P1 |
-| O5 Testing | FR-T1..6, FR-D1..2, NFR-R2 |
-| O6 Client, report | FR-P1..4, FR-R1..5, NFR-U1 |
+| O4 Code review | FR-CR1..7, FR-P5..6, FR-D1..2, NFR-P1 |
+| O5 Testing | FR-T1..8, FR-P5..6, FR-D1..2, NFR-R2 |
+| O6 Client, report | FR-P1..6, FR-R1..5, NFR-U1 |
 | O8 Evaluation | FR-EV1..2, FR-R3, NFR-C1 |
