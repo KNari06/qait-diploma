@@ -5,7 +5,7 @@
 - **Repositories:** [back](https://github.com/bekhop2006/qait-dimploma-back), [worker](https://github.com/bekhop2006/qait-dimploma-worker), [front](https://github.com/bekhop2006/qait-dimploma-front). `main` is protected and changes come only by pull request with one approving review from another team member.
 - **YouTrack:** https://qait-diploma.youtrack.cloud/projects/QAIT, project key `QAIT`. The backlog in 10.4 is imported from [youtrack-backlog.csv](youtrack-backlog.csv). Each task has an assignee, expected outcome, acceptance criteria, deadline and priority.
 - **Branch / commit convention:** `QAIT-12-defect-schema`, commit `QAIT-12: Add defect schema draft`. The PR description links the task and says how the change was checked, and the YouTrack task links back to the PR.
-- **Tags:** `pre-defense-1`, `pre-defense-2`, `final-pre-defense`.
+- **Tags:** `prob-period-1` (pre-defense 1), then the tags announced for the next stages.
 - **Meetings:** weekly with the supervisor, and a short team sync twice a week.
 
 ## 10.2 Responsibilities

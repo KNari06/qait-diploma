@@ -109,6 +109,8 @@ Stage: **pre-defense 1** (analysis, design, planning).
 | 9 | [Verification and evaluation plan](docs/09-verification-plan.md) |
 | 10 | [Project management and risks](docs/10-project-management.md) |
 | 11 | [Supervisor feedback](docs/11-supervisor-feedback.md) |
+| — | [Pre-defense 1 submission report](docs/pre-defense-1-report.md) |
+| — | [Requirements checklist](docs/00-requirements-checklist.md) |
 
 ## Repository structure
 
@@ -134,4 +136,4 @@ cp config/.env.example .env
 - `main` is the reviewed baseline; work is done in branches named after the YouTrack task, e.g. `QAIT-12-defect-schema`.
 - Commit messages start with the task ID: `QAIT-12: Add defect schema draft`.
 - Every change goes through a pull request reviewed by another team member.
-- Each pre-defense submission is tagged: `pre-defense-1`, `pre-defense-2`, `final-pre-defense`.
+- Each pre-defense submission is tagged: `prob-period-1` (pre-defense 1), then the tags announced for the next stages.
