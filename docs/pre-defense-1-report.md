@@ -6,7 +6,7 @@
 | **Team** | Қайдар Н.Н., Таниберген Б.Б., Сариев М.Б. (SE-2406) |
 | **Supervisor** | Айтмұханбетова Э.А. |
 | **Repository** | https://github.com/KNari06/qait-diploma |
-| **Tag** | `pre-defense-1` (set after the open pull requests are merged) |
+| **Tag** | `prob-period-1`: https://github.com/KNari06/qait-diploma/tree/prob-period-1 |
 | **YouTrack** | https://qait-diploma.youtrack.cloud/projects/QAIT (24 tasks, QAIT-1 … QAIT-24) |
 | **Date** | 24 Oct 2026 |
 | **PDF** | [QAIT_PreDefense1_Documentation.pdf](QAIT_PreDefense1_Documentation.pdf): all documents in one file |

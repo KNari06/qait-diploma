@@ -136,4 +136,4 @@ cp config/.env.example .env
 - `main` is the reviewed baseline; work is done in branches named after the YouTrack task, e.g. `QAIT-12-defect-schema`.
 - Commit messages start with the task ID: `QAIT-12: Add defect schema draft`.
 - Every change goes through a pull request reviewed by another team member.
-- Each pre-defense submission is tagged: `pre-defense-1`, `pre-defense-2`, `final-pre-defense`.
+- Each pre-defense submission is tagged: `prob-period-1` (pre-defense 1), then the tags announced for the next stages.

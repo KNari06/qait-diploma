@@ -43,5 +43,5 @@ How this submission covers the components and the Git repository requirements se
 | 5 | Record work progressively | One commit per deliverable, descriptive messages |
 | 6 | Link changes to YouTrack tasks | Task ID in every commit, branch name and pull request (e.g. `QAIT-4-evidence-log`) |
 | 7 | Use branches and pull requests | Changes go through pull requests with a reviewer from the team |
-| 8 | Tag each pre-defense submission | Tag `pre-defense-1` set on the submitted version |
+| 8 | Tag each pre-defense submission | Tag `prob-period-1` set on the submitted version |
 | 9 | Demonstrate the repository | Trace example: YouTrack QAIT-4 → branch `QAIT-4-evidence-log` → pull request #1 → `docs/04-existing-systems.md` |
