@@ -90,9 +90,9 @@ Stage: **pre-defense 1** (analysis, design, planning).
 
 - YouTrack: https://qait-diploma.youtrack.cloud/projects/QAIT (import file: [docs/youtrack-backlog.csv](docs/youtrack-backlog.csv))
 - Source code repositories:
-  - Backend: https://github.com/bekhop2006/qait-dimploma-back
-  - Worker (testing runner): https://github.com/bekhop2006/qait-dimploma-worker
-  - Web client: https://github.com/bekhop2006/qait-dimploma-front
+  - Backend: https://github.com/KNari06/diploma-back
+  - Worker (testing runner): https://github.com/KNari06/diploma-worker
+  - Web client: https://github.com/KNari06/diploma-front
 - Prototype: [docs/08-ux-prototype.md](docs/08-ux-prototype.md)
 - Documentation index:
 
@@ -135,5 +135,5 @@ cp config/.env.example .env
 
 - `main` is the reviewed baseline; work is done in branches named after the YouTrack task, e.g. `QAIT-12-defect-schema`.
 - Commit messages start with the task ID: `QAIT-12: Add defect schema draft`.
-- Every change goes through a pull request reviewed by another team member.
+- Every change goes through a pull request; from milestone M2 each pull request is reviewed by another team member before merging.
 - Each pre-defense submission is tagged: `prob-period-1` (pre-defense 1), then the tags announced for the next stages.
