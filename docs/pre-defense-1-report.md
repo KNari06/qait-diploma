@@ -22,7 +22,7 @@
 | 5 | Technology comparison | [05-technology-comparison.md](05-technology-comparison.md): 6 decisions × 3 alternatives, weighted scoring | Done |
 | 6 | Requirements | [06-requirements.md](06-requirements.md): 30 functional (4 of them provisional, from proto-personas; PR #3) + 11 non-functional requirements, MoSCoW, acceptance criteria, traceability | Done |
 | 7 | Architecture and diagrams | [07-architecture.md](07-architecture.md); context, use case, component, ER, 2 sequence diagrams: sources in `diagrams/src` (PlantUML), exports in `diagrams/export`; defect JSON schema in `src/shared` | Done (component diagram is a draft) |
-| 8 | UX / prototype | [08-ux-prototype.md](08-ux-prototype.md): QAIT.dev screen as a visual starting point, planned screen flow S1–S5, example API | **Partial**: mockups for review, report and dashboard screens pending |
+| 8 | UX / prototype | [08-ux-prototype.md](08-ux-prototype.md): QAIT.dev screen as a visual starting point, screen flow S1–S5, mockups of review (S2), unified report (S4) and dashboard (S5), example API | Done (PR #4) |
 | 9 | Verification and evaluation plan | [09-verification-plan.md](09-verification-plan.md): test levels, 4 research questions, test bench (≥100 seeded defects), metrics, baselines, hypotheses, threats | Done |
 | 10 | Project management and risks | [10-project-management.md](10-project-management.md): roles, 7 milestones, 24-task backlog in YouTrack, 11 risks, dependencies | Done |
 | 11 | Supervisor feedback | [11-supervisor-feedback.md](11-supervisor-feedback.md): log template | **Pending**: to be filled after this review |
@@ -32,7 +32,6 @@ Repository setup: README with all required sections, `docs/`, `diagrams/`, `src/
 ## 2. Known limitations
 
 - **User research:** the 3–5 interviews required for component 2 have not been conducted yet. Requirements currently rest on the literature, existing systems and the team's assumptions, and doc 02 marks each assumption as supported or unverified.
-- **Prototype:** only the screen flow is described for code review (S2), unified report (S4) and dashboard (S5); there are no mockups yet.
 - **Contributions:** most commits so far are by one member. The other members' pull requests (QAIT-2, QAIT-3) are in progress.
 - **Prior work:** the relation between the diploma scope and the existing QAIT.dev product still has to be stated in the README (QAIT-2).
 - **YouTrack:** tasks are imported but not yet assigned to members (accounts pending).
@@ -45,7 +44,6 @@ Repository setup: README with all required sections, `docs/`, `diagrams/`, `src/
 | Conduct and record 3–5 interviews; update requirements (QAIT-2) | Қайдар Н.Н. | <!-- date --> |
 | Verify all literature references (QAIT-3) | Сариев М.Б. | <!-- date --> |
 | Describe reuse of QAIT.dev; add pilot observations (QAIT-2) | Таниберген Б.Б. | <!-- date --> |
-| Mockups for S2, S4, S5 (QAIT-8) | Қайдар Н.Н. | <!-- date --> |
 | Record supervisor feedback and actions (doc 11) | All | after review |
 | Assign YouTrack tasks; give committee access to repositories | Қайдар Н.Н. | before pre-defense |
 | Next stage: skeleton, CI, auth (M2, QAIT-10 … 13) | Таниберген Б.Б., Қайдар Н.Н. | 15 Nov 2026 |

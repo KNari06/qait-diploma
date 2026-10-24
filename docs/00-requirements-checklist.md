@@ -15,7 +15,7 @@ Status: ✅ done · ⚠️ partial · ⏳ pending
 | 5 | Technology comparison | Whether technology choices are justified by the project requirements | Section 5: 6 key decisions (client, backend, storage, service interaction, browser automation, LLM), 3 alternatives each, weighted criteria linked to requirements | ✅ |
 | 6 | Requirements specification | Whether the fulfilment of each mandatory requirement can be verified | Section 6: 30 functional + 11 non-functional requirements, MoSCoW priorities, acceptance criterion for every Must, source of each requirement, traceability 6.4 | ✅ |
 | 7 | Architecture and diagrams | Whether requirements, components, data, and scenarios are aligned | Section 7: system context 7.1, use case diagram with requirement mapping 7.2, component diagram (draft) with owners 7.3, data model 7.4, two sequence diagrams 7.5, architectural decisions 7.6; editable PlantUML sources in `diagrams/src` | ✅ |
-| 8 | UX / prototype | Whether it is clear how users or external systems will interact with the solution | Section 8: visual starting point, screen flows for key scenarios S1–S5, example API | ⚠️ mockups of review, report and dashboard screens pending |
+| 8 | UX / prototype | Whether it is clear how users or external systems will interact with the solution | Section 8: visual starting point, screen flows for key scenarios S1–S5, mockups of review, unified report and dashboard screens, example API | ✅ |
 | 9 | Verification and evaluation plan | How the achievement of the project aim will be demonstrated | Section 9: test levels 9.1, research questions, test bench, matching rule, metrics, baselines, conditions, hypotheses 9.2, threats to validity 9.3 | ✅ |
 | 10 | Project management and risks | Whether project activities are traceable and the next steps are clearly defined | Section 10: Git repository and YouTrack 10.1, responsibilities 10.2, milestones 10.3, backlog 10.4, risks 10.5, dependencies 10.6; Appendix B: YouTrack backlog | ✅ |
 | 11 | Supervisor feedback | Whether the supervisor reviewed the substance of the work and whether that review led to improvements | Section 11: feedback log | ⏳ to be filled after the supervisor's review |
@@ -29,7 +29,7 @@ Status: ✅ done · ⚠️ partial · ⏳ pending
 | Literature review, existing system comparison, and technology comparison | Sections 3, 4, 5 | ✅ |
 | Initial requirements and acceptance criteria | Section 6 | ✅ |
 | Required architectural diagrams, including editable source files | Section 7; `diagrams/src/*.puml`, `diagrams/export/*.svg/png` | ✅ |
-| Prototype materials or a link to the prototype | Section 8 | ⚠️ |
+| Prototype materials or a link to the prototype | Section 8; `docs/prototype/` | ✅ |
 | Verification and evaluation plan | Section 9 | ✅ |
 | A link to YouTrack with assigned and prioritized tasks | https://qait-diploma.youtrack.cloud/projects/QAIT (24 prioritized tasks; owner named in each task) | ⚠️ assignment to member accounts pending |
 | Evidence of progressive contributions from each team member | Commit history and pull requests | ⚠️ contributions of all members in progress |
