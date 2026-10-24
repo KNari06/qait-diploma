@@ -25,7 +25,7 @@
 | 8 | UX / prototype | [08-ux-prototype.md](08-ux-prototype.md): QAIT.dev screen as a visual starting point, screen flow S1–S5, mockups of review (S2), unified report (S4) and dashboard (S5), example API |
 | 9 | Verification and evaluation plan | [09-verification-plan.md](09-verification-plan.md): test levels, 4 research questions, test bench (≥100 seeded defects), metrics, baselines, hypotheses, threats |
 | 10 | Project management and risks | [10-project-management.md](10-project-management.md): roles, 7 milestones, 24-task backlog in YouTrack, 11 risks, dependencies |
-| 11 | Supervisor feedback | [11-supervisor-feedback.md](11-supervisor-feedback.md): log template |
+| 11 | Supervisor feedback | [11-supervisor-feedback.md](11-supervisor-feedback.md): oral review on 24 Oct 2026, materials in good order |
 
 Repository setup: README with all required sections, `docs/`, `diagrams/`, `src/`, `tests/`, `config/.env.example`, `.gitignore`. Commits reference YouTrack task IDs, and changes go through pull requests.
 
@@ -44,7 +44,6 @@ Repository setup: README with all required sections, `docs/`, `diagrams/`, `src/
 | Conduct and record 3–5 interviews; update requirements (QAIT-2) | Қайдар Н.Н. | <!-- date --> |
 | Verify all literature references (QAIT-3) | Сариев М.Б. | <!-- date --> |
 | Describe reuse of QAIT.dev; add pilot observations (QAIT-2) | Таниберген Б.Б. | <!-- date --> |
-| Record supervisor feedback and actions (doc 11) | All | after review |
 | Assign YouTrack tasks; give committee access to repositories | Қайдар Н.Н. | before pre-defense |
 | Next stage: skeleton, CI, auth (M2, QAIT-10 … 13) | Таниберген Б.Б., Қайдар Н.Н. | 15 Nov 2026 |
 
