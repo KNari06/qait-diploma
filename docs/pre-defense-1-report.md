@@ -13,19 +13,19 @@
 
 ## 1. Completed work
 
-| # | Component (stage requirement) | Deliverable | Status |
-|---|---|---|---|
-| 1 | Project proposal | [01-proposal.md](01-proposal.md): problem, users, aim, 8 objectives, outcomes, scope, complexity | Done |
-| 2 | Evidence of relevance | [02-user-research.md](02-user-research.md): 7 assumptions, interview guide and template, hypothetical proto-personas, evidence from literature and existing systems | **Partial**: interviews not yet conducted |
-| 3 | Literature review | [03-literature-review.md](03-literature-review.md): 20 sources (18 peer-reviewed, most 2020–2025), analysis table, synthesis, gaps | Done; reference check in progress (QAIT-3) |
-| 4 | Existing system comparison | [04-existing-systems.md](04-existing-systems.md): 5 systems × 9 criteria, evidence log | Done (PR #1 in review) |
-| 5 | Technology comparison | [05-technology-comparison.md](05-technology-comparison.md): 6 decisions × 3 alternatives, weighted scoring | Done |
-| 6 | Requirements | [06-requirements.md](06-requirements.md): 30 functional (4 of them provisional, from proto-personas; PR #3) + 11 non-functional requirements, MoSCoW, acceptance criteria, traceability | Done |
-| 7 | Architecture and diagrams | [07-architecture.md](07-architecture.md); context, use case, component, ER, 2 sequence diagrams: sources in `diagrams/src` (PlantUML), exports in `diagrams/export`; defect JSON schema in `src/shared` | Done (component diagram is a draft) |
-| 8 | UX / prototype | [08-ux-prototype.md](08-ux-prototype.md): QAIT.dev screen as a visual starting point, screen flow S1–S5, mockups of review (S2), unified report (S4) and dashboard (S5), example API | Done (PR #4) |
-| 9 | Verification and evaluation plan | [09-verification-plan.md](09-verification-plan.md): test levels, 4 research questions, test bench (≥100 seeded defects), metrics, baselines, hypotheses, threats | Done |
-| 10 | Project management and risks | [10-project-management.md](10-project-management.md): roles, 7 milestones, 24-task backlog in YouTrack, 11 risks, dependencies | Done |
-| 11 | Supervisor feedback | [11-supervisor-feedback.md](11-supervisor-feedback.md): log template | **Pending**: to be filled after this review |
+| # | Component (stage requirement) | Deliverable |
+|---|---|---|
+| 1 | Project proposal | [01-proposal.md](01-proposal.md): problem, users, aim, 8 objectives, outcomes, scope, complexity |
+| 2 | Evidence of relevance | [02-user-research.md](02-user-research.md): 7 assumptions, interview guide and template, hypothetical proto-personas, evidence from literature and existing systems |
+| 3 | Literature review | [03-literature-review.md](03-literature-review.md): 20 sources (18 peer-reviewed, most 2020–2025), analysis table, synthesis, gaps |
+| 4 | Existing system comparison | [04-existing-systems.md](04-existing-systems.md): 5 systems × 9 criteria, evidence log |
+| 5 | Technology comparison | [05-technology-comparison.md](05-technology-comparison.md): 6 decisions × 3 alternatives, weighted scoring |
+| 6 | Requirements | [06-requirements.md](06-requirements.md): 30 functional (4 of them provisional, from proto-personas; PR #3) + 11 non-functional requirements, MoSCoW, acceptance criteria, traceability |
+| 7 | Architecture and diagrams | [07-architecture.md](07-architecture.md); context, use case, component, ER, 2 sequence diagrams: sources in `diagrams/src` (PlantUML), exports in `diagrams/export`; defect JSON schema in `src/shared` |
+| 8 | UX / prototype | [08-ux-prototype.md](08-ux-prototype.md): QAIT.dev screen as a visual starting point, screen flow S1–S5, mockups of review (S2), unified report (S4) and dashboard (S5), example API |
+| 9 | Verification and evaluation plan | [09-verification-plan.md](09-verification-plan.md): test levels, 4 research questions, test bench (≥100 seeded defects), metrics, baselines, hypotheses, threats |
+| 10 | Project management and risks | [10-project-management.md](10-project-management.md): roles, 7 milestones, 24-task backlog in YouTrack, 11 risks, dependencies |
+| 11 | Supervisor feedback | [11-supervisor-feedback.md](11-supervisor-feedback.md): log template |
 
 Repository setup: README with all required sections, `docs/`, `diagrams/`, `src/`, `tests/`, `config/.env.example`, `.gitignore`. Commits reference YouTrack task IDs, and changes go through pull requests.
 
