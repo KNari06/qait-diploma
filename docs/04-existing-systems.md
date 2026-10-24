@@ -34,31 +34,34 @@ Legend: ✔ supported · ◐ partial · ✘ not supported · ? not documented
 
 | Criterion | CodeRabbit | Copilot review | SonarQube | testRigor | QAIT.dev | **Proposed platform** |
 |---|---|---|---|---|---|---|
-| C1 PR review | ✔ | ✔ | ◐ rule-based | ✘ | ✘ | ✔ |
+| C1 PR review | ✔ | ✔ | ◐ rule-based PR analysis + LLM fix suggestions (AI CodeFix) | ✘ | ✘ | ✔ |
 | C2 Web app testing | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ |
 | C3 Natural-language tests | ✘ | ✘ | ✘ | ✔ | ✔ | ✔ |
-| C4 Repository context | ✔ | ◐ | ✔ (rules over whole project) | n/a | n/a | ✔ |
+| C4 Repository context | ✔ | ◐ (instruction files: `copilot-instructions.md`, `AGENTS.md`) | ✔ (rules over whole project) | n/a | n/a | ✔ |
 | C5 Unified code + UI report | ✘ | ✘ | ✘ | ✘ | ✘ | ✔ |
 | C6 Evidence per finding | ✔ (code) | ✔ (code) | ✔ (code) | ✔ (screens) | ✔ (screens, logs) | ✔ (both) |
-| C7 Published accuracy | ✘ | ✘ | ◐ (rule docs) | ✘ | ◐ (own study) | ✔ (this project's evaluation) |
-| C8 LLM choice | ✘ | ◐ (model picker) | n/a | ✘ | ◐ | ✔ |
-| C9 Self-hosting | ◐ (enterprise) | ✘ | ✔ | ✘ | ✘ | ✔ (Docker) |
+| C7 Published accuracy | ✘ (none found in docs) | ✘ (none found in docs) | ◐ (rule docs) | ✘ (vendor marketing claims only) | ◐ (team's paper vs. Playwright) | ✔ (this project's evaluation) |
+| C8 LLM choice | ◐ (only self-hosted: bring your own model) | ✘ (model switching not supported for code review) | n/a | ? | ◐ (OpenAI / Gemini) | ✔ |
+| C9 Self-hosting | ◐ (Enterprise, 500+ seats) | ✘ | ✔ (SonarQube Server) | ◐ (on-premise mentioned by third-party listings, not in public docs) | ✘ | ✔ (Docker) |
 
-> Team note: each cell must be backed by the vendor's documentation, a trial account or a screenshot. Add the link and the date checked in 4.5 before the pre-defense. Change any cell that cannot be confirmed to "?".
+Cells were checked against public vendor documentation on 24 Oct 2026 (see 4.5). Absence (✘) means the feature or figure was not found in public documentation. QAIT.dev cells are based on the team's own work on the product.
 
 ## 4.4 Conclusions
 
 - No system in the sample covers **both** code review and UI testing. A team has to buy and configure two tools and read two reports (C1 + C2 + C5).
 - LLM review tools do not publish accuracy on a controlled defect set (C7). Static analysers have well-defined rules but low recall on real bugs [L14].
-- Natural-language E2E tools solve locator brittleness (C3), but they are closed SaaS with no choice of model (C8, C9).
+- Natural-language E2E tools solve locator brittleness (C3), but they are mostly SaaS without a documented choice of model (C8, C9).
+- LLM review tools hide or restrict model choice: Copilot code review does not support model switching, and CodeRabbit allows its own model only in self-hosted Enterprise (C8).
 - **Need for the proposed solution:** one tool that runs both checks, produces one ranked defect report with evidence, and states its own measured accuracy.
 
 ## 4.5 Evidence log
 
-| System | Source | Checked on | By |
-|---|---|---|---|
-| CodeRabbit | https://docs.coderabbit.ai | <!-- date --> | <!-- name --> |
-| GitHub Copilot code review | https://docs.github.com/en/copilot | | |
-| SonarQube | https://docs.sonarsource.com | | |
-| testRigor | https://testrigor.com/docs | | |
-| QAIT.dev | https://qait.dev | | |
+| System | Cells | Source | Checked on | By |
+|---|---|---|---|---|
+| CodeRabbit | C1, C4, C8, C9 | Self-hosted overview: https://docs.coderabbit.ai/self-hosted/overview | 24 Oct 2026 | Қайдар Н.Н. |
+| GitHub Copilot code review | C1, C4, C8 | Concepts — code review: https://docs.github.com/en/copilot/concepts/agents/code-review ; tutorial "Use Copilot code review across the pull request lifecycle": https://docs.github.com/en/copilot/tutorials/use-copilot-code-review-across-the-pull-request-lifecycle | 24 Oct 2026 | Қайдар Н.Н. |
+| SonarQube | C1, C4, C6, C9 | Pull request analysis: https://docs.sonarsource.com/sonarqube-cloud/analyzing-source-code/pull-request-analysis ; AI CodeFix: https://www.sonarsource.com/blog/ai-codefix-sonar | 24 Oct 2026 | Қайдар Н.Н. |
+| testRigor | C2, C3, C6, C9 | Features: https://testrigor.com ; deployment options per third-party listing (Gartner Peer Insights): https://www.gartner.com/reviews/product/testrigor | 24 Oct 2026 | Қайдар Н.Н. |
+| QAIT.dev | all | Team's own work on the product; https://qait.dev | 24 Oct 2026 | Таниберген Б.Б. (to confirm) |
+
+Open points: testRigor model choice (C8) and on-premise details (C9) are not described in public docs and should be asked from the vendor.
