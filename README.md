@@ -109,6 +109,7 @@ Stage: **pre-defense 1** (analysis, design, planning).
 | 9 | [Verification and evaluation plan](docs/09-verification-plan.md) |
 | 10 | [Project management and risks](docs/10-project-management.md) |
 | 11 | [Supervisor feedback](docs/11-supervisor-feedback.md) |
+| — | [Pre-defense 1 submission report](docs/pre-defense-1-report.md) |
 
 ## Repository structure
 
