@@ -1,0 +1,59 @@
+# 3. Literature Review
+
+## 3.1 Method
+
+- **Questions.** (RQ-L1) How well can models generate useful code-review comments? (RQ-L2) How well can LLM agents test applications through their user interface? (RQ-L3) How is defect-detection accuracy measured, and what baselines are used?
+- **Sources.** ACM Digital Library, IEEE Xplore, arXiv, Google Scholar.
+- **Search terms.** "automated code review", "review comment generation", "LLM software testing", "GUI testing LLM", "web agent benchmark", "test flakiness / breakage", "static analysis false positives".
+- **Inclusion.** Peer-reviewed papers or widely cited preprints. Most are from 2020–2025, because the field changes fast. Foundational empirical studies on code review, web-test breakage and static analysis are kept even when older.
+- **Result.** 20 sources are used. 18 of them are peer-reviewed scientific publications and 2 are industrial preprints.
+
+> Team note: check the bibliographic details of every entry (authors, pages, DOI) against the publisher page before submission.
+
+## 3.2 Analysis table
+
+| ID | Reference | Year | Type | Problem / approach | Key finding | Limitation | Use in this project |
+|---|---|---|---|---|---|---|---|
+| L1 | Tufano R. et al., "Using Pre-Trained Models to Boost Code Review Automation", ICSE | 2022 | Conf. | Pre-trained T5 for review-comment and code-refinement tasks | Pre-training clearly improves review automation over non-pre-trained models | Java only; exact-match metrics | Baseline idea for comment generation; metric discussion |
+| L2 | Li Z. et al., "Automating Code Review Activities by Large-Scale Pre-training" (CodeReviewer), ESEC/FSE | 2022 | Conf. | Model pre-trained on diff-review pairs, 9 languages | Defines quality estimation, comment generation and refinement tasks with a public dataset | BLEU-based evaluation correlates poorly with usefulness | Public dataset for the evaluation bench; task decomposition |
+| L3 | Bacchelli A., Bird C., "Expectations, Outcomes, and Challenges of Modern Code Review", ICSE | 2013 | Conf. | Interviews and analysis at Microsoft | Finding defects is the main expectation, yet most comments are about maintainability; understanding the change is the main difficulty | Single company | Motivation; requirement to give context with every comment |
+| L4 | Sadowski C. et al., "Modern Code Review: A Case Study at Google", ICSE-SEIP | 2018 | Conf. | Large-scale study of review at Google | Review is fast and frequent; main value is understanding and maintainability | Large-company context | Workflow expectations (review within hours, small changes) |
+| L5 | Lu J. et al., "LLaMA-Reviewer: Advancing Code Review Automation with LLMs through Parameter-Efficient Fine-Tuning", ISSRE | 2023 | Conf. | LoRA / prefix tuning of LLaMA for review | A 6.7B model with <1% parameters tuned matches specialised models | Fine-tuning needed; offline metrics | Justifies prompting large hosted models instead of fine-tuning (out of scope) |
+| L6 | Tufano R. et al., "Code Review Automation: Strengths and Weaknesses of the State of the Art", arXiv:2401.05136 | 2024 | Preprint (peer-reviewed version in TSE) | Manual inspection of 2,296 predictions of 3 tools | Taxonomy of changes where tools succeed or fail; tools rarely find functional defects | Java only | Defect taxonomy for the bench; motivates measuring defect detection, not text similarity |
+| L7 | "BitsAI-CR: Automated Code Review via LLM in Practice", arXiv:2501.15134 (ByteDance) | 2025 | Industrial preprint | Two-stage pipeline: rule-based detection + LLM filter | 75% precision of comments in production; the "outdated rate" shows whether developers act on comments | Company-specific rules | Two-stage design (generate, then filter) to raise precision; adoption metric |
+| L8 | Wang J. et al., "Software Testing with Large Language Models: Survey, Landscape, and Vision", IEEE TSE | 2024 | Journal | Survey of 100+ papers on LLMs in testing | LLMs are used for unit-test generation, test oracles, input generation and GUI testing; evaluation practices vary widely | Survey; field moves fast | Classification of the testing service; evaluation design |
+| L9 | Zhou S. et al., "WebArena: A Realistic Web Environment for Building Autonomous Agents", ICLR | 2024 | Conf. | Self-hosted realistic web apps for agent tasks | Best GPT-4 agent completes ~14% of tasks vs ~78% for humans | Task completion, not defect finding | Shows agents are unreliable; need retries, step limits and human-readable traces |
+| L10 | Deng X. et al., "Mind2Web: Towards a Generalist Agent for the Web", NeurIPS | 2023 | Conf. | Dataset of 2,000+ tasks on 137 websites | Filtering the DOM to candidate elements before LLM selection improves accuracy and cost | Offline evaluation | Page-state reduction (candidate elements) for the browser agent |
+| L11 | Hammoudi M., Rothermel G., Tonella P., "Why Do Record/Replay Tests of Web Applications Break?", ICST | 2016 | Conf. | 1,065 breakages in 453 versions of web apps | Most breakages come from locators | Selenium IDE tests | Motivation: natural-language steps resolved at run time instead of fixed locators |
+| L12 | Leotta M. et al., "ROBULA+: An Algorithm for Generating Robust XPath Locators for Web Testing", J. Software: Evolution and Process | 2016 | Journal | Algorithm for robust locators | Robust locators reduce, but do not remove, breakages | Still locator-based | Baseline comparison point for UI robustness |
+| L13 | Johnson B. et al., "Why Don't Software Developers Use Static Analysis Tools to Find Bugs?", ICSE | 2013 | Conf. | Interviews with developers | False positives and poor explanations drive developers away | Small sample | Requirement: every finding must explain why and where; severity ranking |
+| L14 | Habib A., Pradel M., "How Many of All Bugs Do We Find? A Study of Static Bug Detectors", ASE | 2018 | Conf. | 3 static detectors on 594 real Java bugs (Defects4J) | Detectors find only ~4.5% of the bugs | Java; older tools | Baseline: static analysers for the code-review experiments |
+| L15 | Liu Z. et al., "Make LLM a Testing Expert: Bringing Human-like Interaction to Mobile GUI Testing via Functionality-aware Decisions", ICSE | 2024 | Conf. | LLM chooses GUI actions with memory of tested functions | +32% activity coverage and 31% more bugs than the best baseline on 93 apps | Mobile, not web | Memory / coverage prompting for the browser agent |
+| L16 | Hou X. et al., "Large Language Models for Software Engineering: A Systematic Literature Review", ACM TOSEM | 2024 | Journal | SLR of 395 papers | Maps LLM uses across SE tasks; notes data leakage and evaluation threats | Rapidly ageing | Threats to validity (data contamination) in the evaluation plan |
+| L17 | Jimenez C. E. et al., "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?", ICLR | 2024 | Conf. | Benchmark of 2,294 real GitHub issues | Repository-level context is the main difficulty for models | Issue resolution, not review | Context retrieval from the repository for review |
+| L18 | Yao S. et al., "ReAct: Synergizing Reasoning and Acting in Language Models", ICLR | 2023 | Conf. | Interleaving reasoning and tool actions | Better reliability and interpretability on interactive tasks | General tasks | Agent loop design (observe, reason, act) |
+| L19 | Lewis P. et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks", NeurIPS | 2020 | Conf. | Retrieval combined with generation | Retrieval improves factuality | Not code-specific | Retrieval of related files for review prompts |
+| L20 | Alshahwan N. et al., "Automated Unit Test Improvement using Large Language Models at Meta", FSE Companion | 2024 | Conf. (industry) | LLM-generated tests filtered by build/run checks | 75% of generated cases built correctly; 73% of recommendations accepted by engineers | Unit tests only | "Generate then verify" principle: findings from the agent are kept only with evidence |
+
+## 3.3 Synthesis
+
+**Code review (L1–L7, L17, L19).** Review automation moved from task-specific pre-trained models (L1, L2) to tuned or prompted LLMs (L5, L7). Two problems keep appearing. First, evaluation by text similarity (BLEU, exact match) says little about whether a comment points at a real defect (L2, L6). Second, models lack repository context (L17). Industrial systems reach useful precision only when a second filtering stage removes noisy comments (L7). Studies of human review (L3, L4) show that developers value comments that explain the change and its risk.
+*Consequence for the project:* the review service retrieves related files (L19), returns structured findings with location and rationale, filters them in a second pass, and is evaluated on seeded defects with precision / recall rather than BLEU.
+
+**UI testing with agents (L8–L12, L15, L18).** Scripted web tests break mostly because of locators (L11), and robust locators help only partly (L12). LLM agents can choose actions from a description (L15, L18) and simplified page state improves their accuracy (L10). Their success rate on realistic tasks is still low (L9).
+*Consequence:* test steps are written in natural language and resolved at run time. The agent works step by step with a step limit and retries, and keeps screenshots and logs as evidence. The evaluation reports both detection accuracy and run stability.
+
+**Static analysis and trust (L13, L14, L20).** Static tools find few real bugs (L14), and developers stop using tools with many false positives (L13). Industrial LLM tools that verify their output gain acceptance (L20).
+*Consequence:* the baseline for code is a static analyser. Each finding carries severity and evidence, and precision is a primary metric.
+
+## 3.4 Gaps addressed by this project
+
+1. Review and UI-testing research is evaluated separately. There is little evidence on how much the two approaches **overlap or complement** each other on the same system.
+2. Evaluation of review tools rarely uses **seeded defects with known ground truth**.
+3. Practical tools seldom publish **accuracy figures** that a small team can use to decide whether to trust them.
+
+## 3.5 Additional technical sources (not counted as scientific)
+
+- Playwright documentation, https://playwright.dev/docs/intro
+- GitHub Docs, "About creating GitHub Apps" and "Webhook events and payloads", https://docs.github.com/en/apps
+- OpenAI API, "Structured Outputs", https://platform.openai.com/docs/guides/structured-outputs
