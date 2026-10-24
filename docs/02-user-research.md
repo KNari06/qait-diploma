@@ -1,6 +1,6 @@
 # 2. Evidence of Relevance: User Research
 
-Status: **guide ready; evidence from literature and prior work collected (2.5); interviews to be conducted (2.6).**
+Status: **guide ready; proto-personas (2.5) and evidence from literature and prior work (2.6) ready; interviews to be conducted (2.7).**
 
 ## 2.1 Goal
 
@@ -83,7 +83,35 @@ Assumptions:  A1 confirmed / rejected / unclear — because …
 New requirements or changes:
 ```
 
-## 2.5 Evidence available before the interviews
+## 2.5 Proto-personas (hypothetical)
+
+> These personas are **hypothetical**. The team wrote them from its own experience in QA and from the literature. They are **not interview data**. They describe whom the interviews should reach and what we expect to hear. Each one is checked against the real interviews in 2.7.
+
+### PP1: QA lead in a product company
+
+- **Context:** leads 5–7 testers, mostly manual regression of 300+ cases before each release; two automation engineers.
+- **Expected pains:** regression takes days; scripted tests break when UI classes or structure change, so automation engineers spend much of their time fixing tests; triaging a failed run (bug, flaky test or environment) is slow.
+- **Expected needs:** testers who know the product write automated scenarios in plain language; every automatic "fix" or element choice is shown with its reason and confidence; failed runs come with the failing request, log and screenshot.
+- **Expected concerns:** a tool that turns a real bug green by acting on the wrong element; safety of test credentials; LLM cost per run.
+- **Assumptions:** A2, A4, A6, A7 · **Requirements:** FR-T1–T3, FR-T5, NFR-S1, NFR-C1
+
+### PP2: CTO of a small team without QA
+
+- **Context:** 10–15 developers, no QA role; developers write unit tests, the product owner checks end-to-end flows by hand before release; some bugs reach users.
+- **Expected pains:** hiring a test-automation engineer is expensive; nobody owns UI testing.
+- **Expected needs:** checks run automatically on every pull request; one place to see what broke; notifications where the team already talks.
+- **Expected concerns:** unpredictable cost; time to set up.
+- **Assumptions:** A1, A3, A7 · **Requirements:** FR-CR1, FR-R2, NFR-U1, NFR-C1
+
+### PP3: Manual tester moving towards automation
+
+- **Context:** 1–3 years of manual testing; started learning Selenium / JavaScript but has no time between projects.
+- **Expected pains:** high entry barrier to automation.
+- **Expected needs:** write or edit test steps in their own language, see each step, and fix steps the tool misunderstood; failures explained in words with a screenshot, not a stack trace.
+- **Expected concerns:** being replaced; expects the tool to take over routine work, not the judgement of what to test.
+- **Assumptions:** A2, A6 · **Requirements:** FR-T1, FR-T3, FR-T4
+
+## 2.6 Evidence available before the interviews
 
 Status of each assumption from published studies, existing products and the team's own work on QAIT.dev. None of this is interview data. It shows which assumptions have outside support and which still need users to confirm them.
 
@@ -97,7 +125,7 @@ Status of each assumption from published studies, existing products and the team
 | A6 Plain-language failure reasons | Explanations matter for tool adoption [L13] | QAIT.dev, testRigor give screenshots and step text | <!-- TODO --> | Partly supported |
 | A7 Visible cost per run | No direct study | — | <!-- TODO --> | **Unverified** |
 
-## 2.6 Interview findings
+## 2.7 Interview findings
 
 <!-- Fill in after the interviews. Keep verified findings (what participants said or showed) separate from team assumptions. -->
 
