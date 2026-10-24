@@ -9,7 +9,7 @@
 | **Tag** | `prob-period-1`: https://github.com/KNari06/qait-diploma/tree/prob-period-1 |
 | **YouTrack** | https://qait-diploma.youtrack.cloud/projects/QAIT (24 tasks, QAIT-1 … QAIT-24) |
 | **Date** | 24 Oct 2026 |
-| **PDF** | [QAIT_PreDefense1_Documentation.pdf](QAIT_PreDefense1_Documentation.pdf): all documents in one file |
+| **PDF** | [SE-2406_Kaidar_ProbPeriod1.pdf](SE-2406_Kaidar_ProbPeriod1.pdf): consolidated report with all 11 sections |
 
 ## 1. Completed work
 
