@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QAIT mockups</title>
+<style>
+  :root { --bg:#f7f7f8; --card:#fff; --ink:#111; --muted:#6b7280; --line:#e5e7eb; --brand:#17a37c; --crit:#b91c1c; --high:#ea580c; --med:#ca8a04; --low:#2563eb; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Segoe UI',Arial,sans-serif; color:var(--ink); background:var(--bg); }
+  .screen { width:1440px; min-height:100vh; display:none; grid-template-columns:220px 1fr; }
+  .screen.on { display:grid; }
+  aside { background:#111; color:#ddd; padding:20px 16px; }
+  .logo { display:flex; align-items:center; gap:8px; font-weight:700; color:#fff; font-size:18px; margin-bottom:28px; }
+  .logo i { width:22px; height:22px; border-radius:50%; background:conic-gradient(var(--brand) 0 25%, #7dd3c0 0 50%, var(--brand) 0 75%, #7dd3c0 0); display:inline-block; }
+  .logo small { color:#888; font-weight:400; }
+  nav a { display:block; padding:9px 10px; border-radius:6px; color:#bbb; text-decoration:none; font-size:14px; margin-bottom:2px; }
+  nav a.on { background:#262626; color:#fff; }
+  main { padding:22px 28px; overflow:hidden; }
+  .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+  .crumb { color:var(--muted); font-size:13px; }
+  h1 { font-size:22px; margin:4px 0 0; }
+  .btn { background:#111; color:#fff; border:0; border-radius:6px; padding:9px 14px; font-size:13px; }
+  .btn.ghost { background:#fff; color:#111; border:1px solid var(--line); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; }
+  .row { display:flex; gap:14px; }
+  .pill { display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px; font-weight:600; }
+  .crit { background:#fee2e2; color:var(--crit); } .high { background:#ffedd5; color:var(--high); }
+  .med { background:#fef9c3; color:var(--med); } .low { background:#dbeafe; color:var(--low); }
+  .code { background:#eef2ff; color:#3730a3; } .ui { background:#dcfce7; color:#15803d; }
+  .muted { color:var(--muted); font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { text-align:left; color:var(--muted); font-weight:600; font-size:12px; padding:8px; border-bottom:1px solid var(--line); }
+  td { padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr.sel td { background:#f0fdf4; }
+  pre { margin:0; font-family:Consolas,monospace; font-size:12px; line-height:1.6; background:#0b1020; color:#d1d5db; padding:12px; border-radius:8px; }
+  .add { background:#14351f; display:inline-block; width:100%; } .del { background:#3b1414; display:inline-block; width:100%; } .hl { outline:2px solid #f59e0b; display:inline-block; width:100%; }
+  .kpi b { display:block; font-size:26px; margin-top:4px; } .kpi { flex:1; }
+  .bar { height:10px; border-radius:4px; background:var(--brand); }
+  .lbl { font-size:12px; flex:0 0 120px; color:#374151; }
+  .chips span { border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:12px; margin-right:6px; background:#fff; }
+  .shot { height:150px; border-radius:8px; background:linear-gradient(#fff,#f3f4f6); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:12px; position:relative; }
+  .shot .err { position:absolute; bottom:40px; left:60px; right:60px; border:2px dashed var(--crit); border-radius:6px; padding:6px; color:var(--crit); font-size:11px; background:#fff5f5; }
+</style>
+</head>
+<body>
+
+<!-- S2: pull request review -->
+<section class="screen" id="s2">
+  <aside><div class="logo"><i></i>QAIT<small>.dev</small></div>
+    <nav><a>Projects</a><a class="on">Pull requests</a><a>Scenarios</a><a>Runs</a><a>Reports</a><a>Dashboard</a><a>Settings</a></nav></aside>
+  <main>
+    <div class="top"><div><div class="crumb">shop-demo / Pull requests / #42</div><h1>feat(cart): apply promo code before tax</h1></div>
+      <div class="row"><button class="btn ghost">Post to GitHub</button><button class="btn">Re-run review</button></div></div>
+    <div class="row" style="margin-bottom:14px">
+      <div class="card kpi"><span class="muted">Status</span><b style="color:var(--brand)">Completed</b><span class="muted">2 min 14 s · gpt model · 18.4k tokens · $0.06</span></div>
+      <div class="card kpi"><span class="muted">Findings</span><b>5</b><span class="muted">1 critical · 2 high · 1 medium · 1 low</span></div>
+      <div class="card kpi"><span class="muted">Filter pass</span><b>9 → 5</b><span class="muted">4 low-confidence findings removed</span></div>
+      <div class="card kpi"><span class="muted">Context</span><b>7 files</b><span class="muted">3 changed + 4 related</span></div>
+    </div>
+    <div class="row" style="align-items:stretch">
+      <div class="card" style="flex:1.05">
+        <table><tr><th>Severity</th><th>Finding</th><th>Location</th><th>Label</th></tr>
+          <tr class="sel"><td><span class="pill crit">critical</span></td><td>Discount applied twice when promo code is re-entered</td><td class="muted">cart/total.ts:48–55</td><td class="muted">—</td></tr>
+          <tr><td><span class="pill high">high</span></td><td>Missing null check for <code>user.address</code></td><td class="muted">cart/tax.ts:21</td><td class="muted">confirmed</td></tr>
+          <tr><td><span class="pill high">high</span></td><td>Promo code compared case-sensitively</td><td class="muted">promo/validate.ts:12</td><td class="muted">—</td></tr>
+          <tr><td><span class="pill med">medium</span></td><td>Error from payment API is swallowed</td><td class="muted">checkout/pay.ts:77</td><td class="muted">—</td></tr>
+          <tr><td><span class="pill low">low</span></td><td>Magic number 0.12 should be a named constant</td><td class="muted">cart/tax.ts:9</td><td class="muted">false positive</td></tr>
+        </table>
+      </div>
+      <div class="card" style="flex:1">
+        <div class="row" style="justify-content:space-between;align-items:center"><b>Discount applied twice when promo code is re-entered</b><span class="pill crit">critical · logic</span></div>
+        <p class="muted" style="margin:6px 0 10px">cart/total.ts, lines 48–55 · confidence 0.86</p>
+<pre>46  export function applyPromo(cart, code) {
+47    const promo = findPromo(code);
+<span class="hl">48    cart.discount += promo.percent * cart.subtotal;</span>
+49    cart.total = cart.subtotal - cart.discount;
+<span class="del">50 -  if (cart.promo === code) return cart;</span>
+<span class="add">50 +  cart.promo = code;</span>
+51    return cart;</pre>
+        <p style="font-size:13px;margin:12px 0 6px"><b>Why:</b> the early return that prevented re-applying the same code was removed, and <code>discount</code> is accumulated with <code>+=</code>. Entering the code twice doubles the discount.</p>
+        <p style="font-size:13px;margin:0 0 12px"><b>Suggested fix:</b> assign <code>cart.discount = …</code> instead of accumulating, or keep the guard for an already applied code.</p>
+        <div class="row"><button class="btn">Confirm</button><button class="btn ghost">False positive</button><button class="btn ghost">Fixed</button></div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- S4: unified report -->
+<section class="screen" id="s4">
+  <aside><div class="logo"><i></i>QAIT<small>.dev</small></div>
+    <nav><a>Projects</a><a>Pull requests</a><a>Scenarios</a><a>Runs</a><a class="on">Reports</a><a>Dashboard</a><a>Settings</a></nav></aside>
+  <main>
+    <div class="top"><div><div class="crumb">shop-demo / Reports</div><h1>Release v1.4.0 · commits a1f3c2e … 9bd07e1</h1></div>
+      <div class="row"><button class="btn ghost">Export PDF</button><button class="btn ghost">Export Markdown</button></div></div>
+    <div class="row" style="margin-bottom:14px">
+      <div class="card kpi"><span class="muted">Total findings</span><b>14</b></div>
+      <div class="card kpi"><span class="muted">From code review</span><b>9</b><span class="muted">4 pull requests</span></div>
+      <div class="card kpi"><span class="muted">From UI testing</span><b>5</b><span class="muted">12 scenarios, 2 failed</span></div>
+      <div class="card kpi"><span class="muted">Found by both</span><b>2</b><span class="muted">linked code ↔ UI</span></div>
+    </div>
+    <div class="chips" style="margin-bottom:12px"><span>Source: all</span><span>Severity: high+</span><span>Status: open</span><span>Type: all</span></div>
+    <div class="row" style="align-items:stretch">
+      <div class="card" style="flex:1.25">
+        <table><tr><th>Severity</th><th>Source</th><th>Finding</th><th>Where</th><th>Status</th></tr>
+          <tr class="sel"><td><span class="pill crit">critical</span></td><td><span class="pill code">code</span> <span class="pill ui">ui</span></td><td>Discount applied twice on repeated promo code</td><td class="muted">cart/total.ts:48 · scenario “Checkout with promo”, step 4</td><td class="muted">open</td></tr>
+          <tr><td><span class="pill high">high</span></td><td><span class="pill ui">ui</span></td><td>“Pay” button stays disabled after card is entered</td><td class="muted">/checkout · step 6</td><td class="muted">open</td></tr>
+          <tr><td><span class="pill high">high</span></td><td><span class="pill code">code</span></td><td>Missing null check for user.address</td><td class="muted">cart/tax.ts:21</td><td class="muted">confirmed</td></tr>
+          <tr><td><span class="pill high">high</span></td><td><span class="pill code">code</span> <span class="pill ui">ui</span></td><td>Error message not shown when payment API fails</td><td class="muted">checkout/pay.ts:77 · step 7</td><td class="muted">open</td></tr>
+          <tr><td><span class="pill med">medium</span></td><td><span class="pill ui">ui</span></td><td>Email field accepts “a@b” without domain</td><td class="muted">/register · step 2</td><td class="muted">open</td></tr>
+          <tr><td><span class="pill med">medium</span></td><td><span class="pill code">code</span></td><td>Promo code compared case-sensitively</td><td class="muted">promo/validate.ts:12</td><td class="muted">open</td></tr>
+        </table>
+      </div>
+      <div class="card" style="flex:1">
+        <b>Discount applied twice on repeated promo code</b>
+        <p class="muted" style="margin:4px 0 10px">critical · logic · found by code review (PR #42) and UI test (run #318)</p>
+        <div class="shot">Checkout — Total: $ 81.00 (expected $ 90.00)<div class="err">Step 4 “Enter promo SAVE10 again” → expected total $90.00, got $81.00</div></div>
+        <p style="font-size:13px;margin:10px 0 4px"><b>Code:</b> cart/total.ts:48 — discount accumulated with <code>+=</code>.</p>
+        <p style="font-size:13px;margin:0 0 4px"><b>UI evidence:</b> screenshot, console log, Playwright trace (step 4).</p>
+        <p class="muted" style="margin:0 0 12px">Model explanation is shown separately from observed facts.</p>
+        <div class="row"><button class="btn">Confirm</button><button class="btn ghost">False positive</button><button class="btn ghost">Open trace</button></div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- S5: dashboard -->
+<section class="screen" id="s5">
+  <aside><div class="logo"><i></i>QAIT<small>.dev</small></div>
+    <nav><a>Projects</a><a>Pull requests</a><a>Scenarios</a><a>Runs</a><a>Reports</a><a class="on">Dashboard</a><a>Settings</a></nav></aside>
+  <main>
+    <div class="top"><div><div class="crumb">shop-demo / Dashboard</div><h1>Quality overview · last 30 days</h1></div>
+      <div class="chips"><span>30 days</span><span>Model: all</span></div></div>
+    <div class="row" style="margin-bottom:14px">
+      <div class="card kpi"><span class="muted">Runs</span><b>46</b><span class="muted">28 reviews · 18 test runs</span></div>
+      <div class="card kpi"><span class="muted">Precision (from user labels)</span><b>0.71</b><span class="muted">63 labelled findings</span></div>
+      <div class="card kpi"><span class="muted">Open high / critical</span><b>4</b></div>
+      <div class="card kpi"><span class="muted">LLM cost</span><b>$3.42</b><span class="muted">cap $0.50 / run · 0 aborted</span></div>
+    </div>
+    <div class="row" style="align-items:stretch">
+      <div class="card" style="flex:1">
+        <b>Findings by type</b><p class="muted" style="margin:2px 0 12px">code and UI sources</p>
+        <div style="display:grid;gap:9px">
+          <div class="row" style="align-items:center"><span class="lbl">logic</span><div class="bar" style="width:62%"></div><span class="muted">18</span></div>
+          <div class="row" style="align-items:center"><span class="lbl">ui-functional</span><div class="bar" style="width:45%;background:#22c55e"></div><span class="muted">13</span></div>
+          <div class="row" style="align-items:center"><span class="lbl">null-handling</span><div class="bar" style="width:34%"></div><span class="muted">10</span></div>
+          <div class="row" style="align-items:center"><span class="lbl">ui-validation</span><div class="bar" style="width:28%;background:#22c55e"></div><span class="muted">8</span></div>
+          <div class="row" style="align-items:center"><span class="lbl">error-handling</span><div class="bar" style="width:21%"></div><span class="muted">6</span></div>
+          <div class="row" style="align-items:center"><span class="lbl">security</span><div class="bar" style="width:10%"></div><span class="muted">3</span></div>
+        </div>
+      </div>
+      <div class="card" style="flex:1">
+        <b>Precision trend</b><p class="muted" style="margin:2px 0 8px">share of findings labelled “confirmed”, per week</p>
+        <svg viewBox="0 0 520 220" width="100%" height="230">
+          <g stroke="#e5e7eb"><line x1="40" y1="20" x2="510" y2="20"/><line x1="40" y1="80" x2="510" y2="80"/><line x1="40" y1="140" x2="510" y2="140"/><line x1="40" y1="200" x2="510" y2="200"/></g>
+          <g fill="#6b7280" font-size="11"><text x="8" y="24">1.0</text><text x="8" y="84">0.8</text><text x="8" y="144">0.6</text><text x="8" y="204">0.4</text>
+          <text x="60" y="216">W40</text><text x="190" y="216">W41</text><text x="320" y="216">W42</text><text x="450" y="216">W43</text></g>
+          <polyline fill="none" stroke="#17a37c" stroke-width="3" points="70,158 200,128 330,104 460,92"/>
+          <polyline fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5 4" points="70,176 200,170 330,168 460,164"/>
+          <g fill="#17a37c"><circle cx="70" cy="158" r="4"/><circle cx="200" cy="128" r="4"/><circle cx="330" cy="104" r="4"/><circle cx="460" cy="92" r="4"/></g>
+        </svg>
+        <p class="muted" style="margin:0">— with filter pass &nbsp;&nbsp; - - without filter pass</p>
+      </div>
+      <div class="card" style="flex:.8">
+        <b>By severity</b>
+        <table style="margin-top:8px"><tr><th>Severity</th><th>Open</th><th>Closed</th></tr>
+          <tr><td><span class="pill crit">critical</span></td><td>1</td><td>3</td></tr>
+          <tr><td><span class="pill high">high</span></td><td>3</td><td>11</td></tr>
+          <tr><td><span class="pill med">medium</span></td><td>7</td><td>15</td></tr>
+          <tr><td><span class="pill low">low</span></td><td>5</td><td>13</td></tr></table>
+        <p class="muted" style="margin-top:14px">Illustrative data for the prototype.</p>
+      </div>
+    </div>
+  </main>
+</section>
+
+<script>
+  const id = (location.hash || '#s2').slice(1);
+  document.getElementById(id).classList.add('on');
+</script>
+</body>
+</html>
